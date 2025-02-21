@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffebee;
+            color: #d32f2f;
+            padding: 50px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        h1 {
+            font-size: 2.5em;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            background-color: #d32f2f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #b71c1c;
+        }
+        #yes-button {
+            transition: all 0.3s ease;
+        }
+        .gif-container {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        let yesButtonSize = 1;
+        let gifAdded = false;
+        function increaseYesSize() {
+            yesButtonSize += 0.5;
+            document.getElementById('yes-button').style.transform = `scale(${yesButtonSize})`;
+            if (yesButtonSize >= 4) {
+                document.getElementById('yes-button').style.width = '25vw';
+            }
+            if (!gifAdded) {
+                document.getElementById('gif-area').innerHTML = '<iframe src="https://giphy.com/embed/ffzhLUixCtlsc" width="200" height="200" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>';
+                gifAdded = true;
+            }
+        }
+        function showYesGif() {
+            document.getElementById('gif-area').innerHTML = '<iframe src="https://giphy.com/embed/TKSLd3q4TFh9jKzdQX" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>';
+            document.getElementById('apology-text').textContent = "Wait, they don't love you like I love you";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>I'm Sorry, Bub</h1>
+        <p id="apology-text">I didn't mean to hurt you. I regret being loud at you.</p>
+        <p>Please forgive me?</p>
+        <div class="buttons">
+            <button id="yes-button" onclick="showYesGif()">Yes</button>
+            <button onclick="increaseYesSize()">No</button>
+        </div>
+        <div id="gif-area" class="gif-container"></div>
+    </div>
+</body>
+</html>
